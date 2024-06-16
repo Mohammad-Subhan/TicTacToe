@@ -7,10 +7,9 @@ import javax.swing.JButton;
 public class RoundedButton extends JButton {
 
     private Color buttonColor;
-    private int buttonRoundness = UIUtils.BT_ROUNDNESS;
+    private final int buttonRoundness = UIUtils.BT_ROUNDNESS;
 
     public RoundedButton() {
-
         super();
         setContentAreaFilled(false); // Ensure the button's background is not painted by default
     }
@@ -36,9 +35,5 @@ public class RoundedButton extends JButton {
 
     public void setButtonColor(Color newColor) {
         this.buttonColor = newColor;
-    }
-
-    public void setButtonRoundness(int newRoundness) {
-        this.buttonRoundness = newRoundness;
     }
 }
