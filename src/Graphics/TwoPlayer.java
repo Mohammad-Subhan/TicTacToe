@@ -13,92 +13,15 @@ import java.awt.event.ActionListener;
 public class TwoPlayer implements ActionListener {
 
     private RoundedButton backbutton;
-    private final RoundedButton[][] tableButtons = new RoundedButton[3][3];
-    private final TextField p1Field;
-    private final TextField p2Field;
+    private RoundedButton[][] tableButtons = new RoundedButton[3][3];
     private JSeparator separator;
-    private JLabel crossLabel;
-    private JLabel circleLabel;
-    private final JLabel infoLabel;
-    private final JLabel p1Label;
-    private final JLabel p2Label;
-    private final RoundedButton startButton;
+    private JLabel p1Label;
+    private JLabel p2Label;
     private final ImageIcon crossIcon = new ImageIcon("./src/Images/cross.png");
     private final ImageIcon circleIcon = new ImageIcon("./src/Images/circle.png");
     int count = 0;
 
     public TwoPlayer() {
-
-        UIUtils.panel.setVisible(true);
-
-        // ========================================= Button (Back) ==============================================
-        backbutton = new RoundedButton();
-        backbutton.setBounds(5, 10, 40, 40);
-        ImageIcon imageIcon = new ImageIcon("./src/Images/backArrow.png");
-        backbutton.setIcon(imageIcon);
-        backbutton.setButtonColor(UIUtils.BG_COLOR);
-        backbutton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-        backbutton.setFocusable(false);
-        backbutton.addActionListener(this);
-        UIUtils.panel.add(backbutton);
-
-        // =========================================== Info Label ===============================================
-        infoLabel = new JLabel();
-        infoLabel.setText("Players Info");
-        infoLabel.setBounds(117, 20, 106, 24);
-        infoLabel.setFont(new Font("Berlin Sans FB Demi", Font.PLAIN, 20));
-        infoLabel.setForeground(UIUtils.PR_COLOR);
-        UIUtils.panel.add(infoLabel);
-
-        // ===================================== Input Label (Player 1) =========================================
-        p1Label = new JLabel();
-        p1Label.setText("Player 1 Name : ");
-        p1Label.setBounds(70, 90, 150, 18);
-        p1Label.setFont(new Font("Berlin Sans FB Demi", Font.PLAIN, 18));
-        p1Label.setForeground(UIUtils.BT_COLOR1);
-        UIUtils.panel.add(p1Label);
-
-        // ===================================== Input Field (Player 1) =========================================
-        p1Field = new TextField();
-        p1Field.setBounds(70, 115, 200, 30);
-        p1Field.setFont(new Font("Berlin Sans FB Demi", Font.PLAIN, 14));
-        p1Field.setForeground(UIUtils.BT_COLOR1);
-        p1Field.setCaretColor(UIUtils.BT_COLOR1);
-        p1Field.setBorderColor(UIUtils.BT_COLOR1);
-        UIUtils.panel.add(p1Field);
-
-        // ===================================== Input Label (Player 2) =========================================
-        p2Label = new JLabel();
-        p2Label.setText("Player 2 Name : ");
-        p2Label.setBounds(70, 160, 150, 18);
-        p2Label.setFont(new Font("Berlin Sans FB Demi", Font.PLAIN, 18));
-        p2Label.setForeground(UIUtils.BT_COLOR2);
-        UIUtils.panel.add(p2Label);
-
-        // ===================================== Input Field (Player 2) =========================================
-        p2Field = new TextField();
-        p2Field.setBounds(70, 185, 200, 30);
-        p2Field.setFont(new Font("Berlin Sans FB Demi", Font.PLAIN, 14));
-        p2Field.setForeground(UIUtils.BT_COLOR2);
-        p2Field.setCaretColor(UIUtils.BT_COLOR2);
-        p2Field.setBorderColor(UIUtils.BT_COLOR2);
-        UIUtils.panel.add(p2Field);
-
-        // ======================================== Start Game Button ===========================================
-        startButton = new RoundedButton();
-        startButton.setText("Start Game");
-        startButton.setBounds(100, 260, 140, 40);
-        startButton.setButtonColor(UIUtils.PR_COLOR);
-        startButton.setForeground(UIUtils.BG_COLOR);
-        startButton.setFocusable(false);
-        startButton.addActionListener(this);
-        startButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-        startButton.setFont(new Font("Berlin Sans FB Demi", Font.PLAIN, 14));
-        UIUtils.panel.add(startButton);
-
-    }
-
-    private void startGame() {
 
         UIUtils.panel.setVisible(true);
 
@@ -123,28 +46,18 @@ public class TwoPlayer implements ActionListener {
 
 
         // ========================================= Label (Player 1) ===========================================
-        p1Label.setText("P1 : " + p1Field.getText());
-        p1Label.setBounds(20, 15, 150, 18);
-        p1Label.setFont(new Font("Berlin Sans FB Demi", Font.PLAIN, 15));
+        p1Label = new JLabel();
+        p1Label.setText("Player X");
+        p1Label.setBounds(42, 30, 150, 24);
+        p1Label.setFont(new Font("Berlin Sans FB Demi", Font.PLAIN, 22));
         p1Label.setForeground(UIUtils.BT_COLOR1);
         UIUtils.panel.add(p1Label);
 
-        // ========================================== Label (Cross) =============================================
-        crossLabel = new JLabel();
-        crossLabel.setIcon(crossIcon);
-        crossLabel.setBounds(73, 35, 24, 40);
-        UIUtils.panel.add(crossLabel);
-
-        // ========================================== Label (Circle) ============================================
-        circleLabel = new JLabel();
-        circleLabel.setIcon(circleIcon);
-        circleLabel.setBounds(243, 35, 24, 40);
-        UIUtils.panel.add(circleLabel);
-
         // ========================================= Label (Player 2) ===========================================
-        p2Label.setText("P2 : " + p2Field.getText());
-        p2Label.setBounds(190, 15, 150, 18);
-        p2Label.setFont(new Font("Berlin Sans FB Demi", Font.PLAIN, 15));
+        p2Label = new JLabel();
+        p2Label.setText("Player O");
+        p2Label.setBounds(212, 30, 150, 24);
+        p2Label.setFont(new Font("Berlin Sans FB Demi", Font.PLAIN, 22));
         p2Label.setForeground(UIUtils.BT_COLOR2);
         UIUtils.panel.add(p2Label);
 
@@ -173,10 +86,6 @@ public class TwoPlayer implements ActionListener {
             UIUtils.panel.setVisible(false);
             new MainMenu();
 
-        } else if (e.getSource() == startButton) {
-            UIUtils.panel.removeAll();
-            UIUtils.panel.setVisible(false);
-            startGame();
         }
 
         for (int i = 0; i < 3; i++) {
@@ -194,12 +103,12 @@ public class TwoPlayer implements ActionListener {
                         if (checkWinner(tableButtons) == 1) {
 
                             UIUtils.frame.setEnabled(false);
-                            new WinnerDialog(p1Field.getText() + " has won");
+                            new WinnerDialog("Player X has won");
 
                         } else if (checkWinner(tableButtons) == 2) {
 
                             UIUtils.frame.setEnabled(false);
-                            new WinnerDialog(p2Field.getText() + " has won");
+                            new WinnerDialog("Player O has won");
                         }
 
                     } else {

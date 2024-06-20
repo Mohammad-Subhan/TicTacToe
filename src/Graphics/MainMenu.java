@@ -70,12 +70,14 @@ public class MainMenu implements ActionListener {
             // Single Player Logic
             UIUtils.frame.setEnabled(false);
             new WinnerDialog("Coming soon");
+
         } else if (e.getSource() == tpButton) {
 
             // Two Players Logic
             UIUtils.panel.removeAll();
             UIUtils.panel.setVisible(false);
             new TwoPlayer();
+
         }
 
     }
