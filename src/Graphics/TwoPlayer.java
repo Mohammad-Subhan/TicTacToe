@@ -65,6 +65,7 @@ public class TwoPlayer implements ActionListener {
             for (int j = 0; j < 3; j++) {
 
                 tableButtons[i][j] = new RoundedButton();
+                tableButtons[i][j].setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
                 tableButtons[i][j].setBounds(85 + (60 * j), 100 + (60 * i), 50, 50);
                 tableButtons[i][j].setButtonColor(new Color(0xfcf2af));
                 tableButtons[i][j].setFocusable(false);
